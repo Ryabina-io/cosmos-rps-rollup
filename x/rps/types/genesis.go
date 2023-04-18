@@ -10,8 +10,10 @@ const DefaultIndex uint64 = 1
 // DefaultGenesis returns the default genesis state
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
-		SystemInfo: nil,
-		GamesList:  []Games{},
+		SystemInfo: &SystemInfo{
+			NextId: uint64(DefaultIndex),
+		},
+		GamesList: []Games{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
