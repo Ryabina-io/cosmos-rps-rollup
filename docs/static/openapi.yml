@@ -43900,6 +43900,42 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
+  /rps/rps/system_info:
+    get:
+      summary: Queries a SystemInfo by index.
+      operationId: RpsRpsSystemInfo
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              SystemInfo:
+                type: object
+                properties:
+                  nextId:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
 definitions:
   cosmos.auth.v1beta1.AddressBytesToStringResponse:
     type: object
@@ -71443,6 +71479,15 @@ definitions:
   rps.rps.Params:
     type: object
     description: Params defines the parameters for the module.
+  rps.rps.QueryGetSystemInfoResponse:
+    type: object
+    properties:
+      SystemInfo:
+        type: object
+        properties:
+          nextId:
+            type: string
+            format: uint64
   rps.rps.QueryParamsResponse:
     type: object
     properties:
@@ -71450,3 +71495,9 @@ definitions:
         description: params holds all the parameters of this module.
         type: object
     description: QueryParamsResponse is response type for the Query/Params RPC method.
+  rps.rps.SystemInfo:
+    type: object
+    properties:
+      nextId:
+        type: string
+        format: uint64

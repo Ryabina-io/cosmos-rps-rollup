@@ -1,0 +1,9 @@
+syntax = "proto3";
+package rps.rps;
+
+option go_package = "rps/x/rps/types";
+
+message SystemInfo {
+  uint64 nextId = 1; 
+  
+}

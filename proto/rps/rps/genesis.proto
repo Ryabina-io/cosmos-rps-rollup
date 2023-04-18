@@ -1,12 +1,16 @@
 syntax = "proto3";
+
 package rps.rps;
 
 import "gogoproto/gogo.proto";
 import "rps/rps/params.proto";
+import "rps/rps/system_info.proto";
 
 option go_package = "rps/x/rps/types";
 
 // GenesisState defines the rps module's genesis state.
 message GenesisState {
-  Params params = 1 [(gogoproto.nullable) = false];
+  Params     params     = 1 [(gogoproto.nullable) = false];
+  SystemInfo systemInfo = 2;
 }
+
