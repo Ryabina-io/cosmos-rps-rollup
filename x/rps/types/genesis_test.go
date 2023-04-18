@@ -25,9 +25,31 @@ func TestGenesisState_Validate(t *testing.T) {
 				SystemInfo: &types.SystemInfo{
 					NextId: 13,
 				},
+				GamesList: []types.Games{
+					{
+						Index: "0",
+					},
+					{
+						Index: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated games",
+			genState: &types.GenesisState{
+				GamesList: []types.Games{
+					{
+						Index: "0",
+					},
+					{
+						Index: "0",
+					},
+				},
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	} {

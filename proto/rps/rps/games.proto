@@ -1,0 +1,19 @@
+syntax = "proto3";
+package rps.rps;
+
+option go_package = "rps/x/rps/types";
+import "gogoproto/gogo.proto"; 
+import "cosmos/base/v1beta1/coin.proto"; 
+
+message Games {
+  string index = 1; 
+  string player1 = 2; 
+  string player2 = 3; 
+  string turnHash1 = 4; 
+  string turnHash2 = 5; 
+  string turn1 = 6; 
+  string turn2 = 7; 
+  cosmos.base.v1beta1.Coin betAmount = 8 [(gogoproto.nullable) = false]; 
+  
+}
+

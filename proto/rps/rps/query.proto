@@ -7,6 +7,8 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "rps/rps/params.proto";
 import "rps/rps/system_info.proto";
+import "rps/rps/games.proto";
+import "cosmos/base/v1beta1/coin.proto";
 
 option go_package = "rps/x/rps/types";
 
@@ -24,6 +26,16 @@ service Query {
     option (google.api.http).get = "/rps/rps/system_info";
   
   }
+  
+  // Queries a list of Games items.
+  rpc Games    (QueryGetGamesRequest) returns (QueryGetGamesResponse) {
+    option (google.api.http).get = "/rps/rps/games/{index}";
+  
+  }
+  rpc GamesAll (QueryAllGamesRequest) returns (QueryAllGamesResponse) {
+    option (google.api.http).get = "/rps/rps/games";
+  
+  }
 }
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
@@ -39,5 +51,22 @@ message QueryGetSystemInfoRequest {}
 
 message QueryGetSystemInfoResponse {
   SystemInfo SystemInfo = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetGamesRequest {
+  string index = 1;
+}
+
+message QueryGetGamesResponse {
+  Games games = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGamesRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGamesResponse {
+  repeated Games                                  games      = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
