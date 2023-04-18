@@ -32,6 +32,7 @@ func GetTxCmd() *cobra.Command {
 
 	cmd.AddCommand(CmdCreateGame())
 	cmd.AddCommand(CmdJoinGame())
+	cmd.AddCommand(CmdRevealGame())
 	// this line is used by starport scaffolding # 1
 
 	return cmd

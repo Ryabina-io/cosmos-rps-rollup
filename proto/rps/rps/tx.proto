@@ -11,6 +11,7 @@ option go_package = "rps/x/rps/types";
 service Msg {
   rpc CreateGame (MsgCreateGame) returns (MsgCreateGameResponse);
   rpc JoinGame   (MsgJoinGame  ) returns (MsgJoinGameResponse  );
+  rpc RevealGame (MsgRevealGame) returns (MsgRevealGameResponse);
 }
 message MsgCreateGame {
   string                   creator   = 1;
@@ -27,4 +28,13 @@ message MsgJoinGame {
 }
 
 message MsgJoinGameResponse {}
+
+message MsgRevealGame {
+  string creator = 1;
+  uint64 gameId  = 2;
+  string turn    = 3;
+  string salt    = 4;
+}
+
+message MsgRevealGameResponse {}
 
