@@ -1,0 +1,7 @@
+syntax = "proto3";
+package rps.rps;
+
+option go_package = "rps/x/rps/types";
+
+// Msg defines the Msg service.
+service Msg {}
