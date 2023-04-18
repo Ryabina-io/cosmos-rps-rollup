@@ -1,7 +1,21 @@
 syntax = "proto3";
+
 package rps.rps;
+
+import "cosmos/base/v1beta1/coin.proto";
+import "gogoproto/gogo.proto";
 
 option go_package = "rps/x/rps/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc CreateGame (MsgCreateGame) returns (MsgCreateGameResponse);
+}
+message MsgCreateGame {
+  string                   creator   = 1;
+  cosmos.base.v1beta1.Coin betAmount = 2 [(gogoproto.nullable) = false];
+  string                   turnHash  = 3;
+}
+
+message MsgCreateGameResponse {}
+
