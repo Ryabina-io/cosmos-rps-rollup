@@ -10,6 +10,7 @@ option go_package = "rps/x/rps/types";
 // Msg defines the Msg service.
 service Msg {
   rpc CreateGame (MsgCreateGame) returns (MsgCreateGameResponse);
+  rpc JoinGame   (MsgJoinGame  ) returns (MsgJoinGameResponse  );
 }
 message MsgCreateGame {
   string                   creator   = 1;
@@ -18,4 +19,12 @@ message MsgCreateGame {
 }
 
 message MsgCreateGameResponse {}
+
+message MsgJoinGame {
+  string creator  = 1;
+  uint64 gameId   = 2;
+  string turnHash = 3;
+}
+
+message MsgJoinGameResponse {}
 
