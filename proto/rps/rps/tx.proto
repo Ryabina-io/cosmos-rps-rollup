@@ -12,6 +12,7 @@ service Msg {
   rpc CreateGame (MsgCreateGame) returns (MsgCreateGameResponse);
   rpc JoinGame   (MsgJoinGame  ) returns (MsgJoinGameResponse  );
   rpc RevealGame (MsgRevealGame) returns (MsgRevealGameResponse);
+  rpc RemoveGame (MsgRemoveGame) returns (MsgRemoveGameResponse);
 }
 message MsgCreateGame {
   string                   creator   = 1;
@@ -39,4 +40,11 @@ message MsgRevealGame {
 }
 
 message MsgRevealGameResponse {}
+
+message MsgRemoveGame {
+  string creator = 1;
+  uint64 gameId  = 2;
+}
+
+message MsgRemoveGameResponse {}
 

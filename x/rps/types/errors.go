@@ -10,4 +10,5 @@ import (
 var (
 	NoGameFoundError       = sdkerrors.Register(ModuleName, 1100, "No Game Found")
 	GameAlreadyJoinedError = sdkerrors.Register(ModuleName, 1101, "Game Already Joined")
+	NotGameOwnerError      = sdkerrors.Register(ModuleName, 1102, "Not Game Owner")
 )

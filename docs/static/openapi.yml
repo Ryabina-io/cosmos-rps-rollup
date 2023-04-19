@@ -71721,6 +71721,8 @@ definitions:
         type: string
   rps.rps.MsgJoinGameResponse:
     type: object
+  rps.rps.MsgRemoveGameResponse:
+    type: object
   rps.rps.MsgRevealGameResponse:
     type: object
   rps.rps.Params:
