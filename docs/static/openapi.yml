@@ -71716,6 +71716,9 @@ definitions:
           signatures required by gogoproto.
   rps.rps.MsgCreateGameResponse:
     type: object
+    properties:
+      gameId:
+        type: string
   rps.rps.MsgJoinGameResponse:
     type: object
   rps.rps.MsgRevealGameResponse:

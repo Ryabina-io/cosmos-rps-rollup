@@ -19,7 +19,9 @@ message MsgCreateGame {
   string                   turnHash  = 3;
 }
 
-message MsgCreateGameResponse {}
+message MsgCreateGameResponse {
+  string gameId = 1;
+}
 
 message MsgJoinGame {
   string creator  = 1;
