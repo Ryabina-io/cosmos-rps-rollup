@@ -3,9 +3,7 @@ package cli
 import (
 	"encoding/hex"
 	"errors"
-	"math/rand"
 	"strconv"
-	"time"
 
 	"rps/x/rps/types"
 
@@ -19,33 +17,6 @@ import (
 
 var _ = strconv.Itoa(0)
 
-func init() {
-}
-
-var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
-func RandStringRunes(n int) string {
-	b := make([]rune, n)
-	for i := range b {
-		b[i] = letterRunes[rand.Intn(len(letterRunes))]
-	}
-	return string(b)
-}
-
-// function generates random salt string
-func GenerateSalt() string {
-	rand.Seed(time.Now().UnixNano())
-	return RandStringRunes(10)
-}
-
-// function validates rock scissors paper turn string
-func ValidateTurn(turn string) bool {
-	if turn == "rock" || turn == "scissors" || turn == "paper" {
-		return true
-	}
-	return false
-}
-
 func CmdCreateGame() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "create-game [bet-amount] [turn]",
@@ -57,8 +28,8 @@ func CmdCreateGame() *cobra.Command {
 				return err
 			}
 			argTurn := args[1]
-			if ValidateTurn(argTurn) == false {
-				return errors.New("Invalid turn. Turn must be rock, scissors or paper")
+			if !ValidateTurn(argTurn) {
+				return errors.New("invalid turn. Turn must be rock, scissors or paper")
 			}
 			salt := GenerateSalt()
 			// print salt

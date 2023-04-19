@@ -8,5 +8,6 @@ import (
 
 // x/rps module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	NoGameFoundError       = sdkerrors.Register(ModuleName, 1100, "No Game Found")
+	GameAlreadyJoinedError = sdkerrors.Register(ModuleName, 1101, "Game Already Joined")
 )
