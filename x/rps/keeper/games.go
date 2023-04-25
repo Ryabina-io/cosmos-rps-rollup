@@ -1,9 +1,10 @@
 package keeper
 
 import (
+	"rps/x/rps/types"
+
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"rps/x/rps/types"
 )
 
 // SetGames set a specific games in the store from its index

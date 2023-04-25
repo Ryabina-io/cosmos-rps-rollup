@@ -1,14 +1,16 @@
 package cli
 
 import (
+	"errors"
 	"strconv"
+
+	"rps/x/rps/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
-	"rps/x/rps/types"
 )
 
 var _ = strconv.Itoa(0)
@@ -26,6 +28,9 @@ func CmdRevealGame() *cobra.Command {
 			argTurn := args[1]
 			argSalt := args[2]
 
+			if !ValidateTurn(argTurn) {
+				return errors.New("invalid turn. Turn must be rock, scissors or paper")
+			}
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
