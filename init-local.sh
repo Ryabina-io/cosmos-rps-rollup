@@ -2,9 +2,9 @@
 
 # set variables for the chain
 VALIDATOR_NAME=validator1
-CHAIN_ID=rpsd
-KEY_NAME=rps-key
-KEY_2_NAME=rps-key-2
+CHAIN_ID=rps
+KEY_NAME=alice
+KEY_2_NAME=bob
 CHAINFLAG="--chain-id ${CHAIN_ID}"
 TOKEN_AMOUNT="10000000000000000000000000stake"
 STAKING_AMOUNT="1000000000stake"
@@ -21,8 +21,6 @@ echo $NAMESPACE_ID
 DA_BLOCK_HEIGHT=$(curl http://0.0.0.0:26650/block | jq -r '.result.block.header.height')
 echo $DA_BLOCK_HEIGHT
 
-# build the gm chain with Rollkit
-ignite chain build
 
 # reset any existing genesis/chain data
 rpsd tendermint unsafe-reset-all
@@ -45,10 +43,7 @@ rpsd gentx $KEY_NAME $STAKING_AMOUNT --chain-id $CHAIN_ID --keyring-backend test
 rpsd collect-gentxs
 
 # start the chain
-# rpsd start --rollkit.aggregator true --rollkit.da_layer celestia --rollkit.da_config='{"base_url":"http://localhost:26659","timeout":60000000000,"fee":6000,"gas_limit":6000000}' --rollkit.namespace_id $NAMESPACE_ID --rollkit.da_start_height $DA_BLOCK_HEIGHT
-
-# uncomment the next command if you are using lazy aggregation
 rpsd start --rollkit.aggregator true --rollkit.da_layer celestia --rollkit.da_config='{"base_url":"http://localhost:26659","timeout":60000000000,"fee":6000,"gas_limit":6000000}' --rollkit.namespace_id $NAMESPACE_ID --rollkit.da_start_height $DA_BLOCK_HEIGHT
 
-# 4315d78ba77856e3
-# 30
+# uncomment the next command if you are using lazy aggregation
+# gmd start --rollkit.aggregator true --rollkit.da_layer celestia --rollkit.da_config='{"base_url":"http://localhost:26659","timeout":60000000000,"fee":6000,"gas_limit":6000000}' --rollkit.namespace_id $NAMESPACE_ID --rollkit.da_start_height $DA_BLOCK_HEIGHT --rollkit.lazy_aggregator true
