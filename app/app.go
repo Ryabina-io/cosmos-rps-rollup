@@ -106,6 +106,7 @@ import (
 	rpsmodule "rps/x/rps"
 	rpsmodulekeeper "rps/x/rps/keeper"
 	rpsmoduletypes "rps/x/rps/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	appparams "rps/app/params"
@@ -113,7 +114,7 @@ import (
 )
 
 const (
-	AccountAddressPrefix = "cosmos"
+	AccountAddressPrefix = "rps"
 	Name                 = "rps"
 )
 
