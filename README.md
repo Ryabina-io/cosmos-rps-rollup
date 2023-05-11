@@ -13,7 +13,7 @@ There is a version of rollup that we will aggregate for some time. However, ther
     - `celestia light start --core.ip https://rpc-blockspacerace.pops.one --gateway --gateway.addr 127.0.0.1 --gateway.port 26659 --p2p.network blockspacerace`
     - Or use any public DA node.
 1. Init chain
-  `rps init <moniker>`
+  `rpsd init <moniker>`
 1. Swap genesis file in chain home directory (default: ~/.rpsd) <HOME>/.rps/config/genesis.json with [genesis.json](https://github.com/Ryabina-io/cosmos-rps-rollup/raw/master/genesis.json)
   `cp genesis.json ~/.rps/config/genesis.json`
 1. Use provided parameters of rollup to sync for
