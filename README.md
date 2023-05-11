@@ -4,7 +4,7 @@ It is based on the official Rollkit [documentation](https://rollkit.dev/docs/tut
 ### Building binary
 
 1. [Install go](https://go.dev/doc/install)
-1. [Install Innite cli](https://docs.ignite.com/welcome/install)
+1. [Install Ignite cli](https://docs.ignite.com/welcome/install)
 1. Build chain using `ignite chain build` in project folder. (TODO: add go building instructions without ignite)
 
 ### Connecting to running rollup
@@ -17,8 +17,8 @@ There is a version of rollup that we will aggregate for some time. However, ther
 1. Swap genesis file in chain home directory (default: ~/.rpsd) <HOME>/.rps/config/genesis.json with [genesis.json](https://github.com/Ryabina-io/cosmos-rps-rollup/raw/master/genesis.json)
   `cp genesis.json ~/.rps/config/genesis.json`
 1. Use provided parameters of rollup to sync for
-`DA_BLOCK_HEIGHT=455368`
-`NAMESPACE_ID=4e114dd721e93402`
+`export DA_BLOCK_HEIGHT=455368`
+`export NAMESPACE_ID=4e114dd721e93402`
 1. Start rollup with command:
 `rpsd start --rollkit.block_time 10s --rollkit.da_block_time 10s --rollkit.da_layer celestia --rollkit.da_config='{"base_url":"http://localhost:26659","timeout":60000000000,"fee":6000,"gas_limit":6000000}' --rollkit.namespace_id $NAMESPACE_ID --rollkit.da_start_height $DA_BLOCK_HEIGHT`
 On some block, on which our aggregation misses sending blob, syncing of you node will stop.
